@@ -1,5 +1,7 @@
-from .views import EventList
+from .views import EventViewSet, UserViewSet
 from django.urls import path
-urlpatterns = [
-    path('events/', EventList.as_view())
-]
+from rest_framework.routers import DefaultRouter
+router = DefaultRouter()
+router.register(r'events', EventViewSet)
+router.register(r'users', UserViewSet)
+urlpatterns = router.urls
